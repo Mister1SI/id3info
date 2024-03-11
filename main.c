@@ -81,13 +81,37 @@ int main(int argc, char** argv) {
 			printf("Setting title to ");
 			puts(buffer);
 		} else if(0 == strncmp(buffer, "artist", 6)) {
-			puts("Editing artist");
+			printf("Enter new artist(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+
 		} else if(0 == strncmp(buffer, "album", 5)) {
-			puts("Editing album");
+			printf("Enter new album(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+
 		} else if(0 == strncmp(buffer, "year", 4)) {
-			puts("Editing year");
+			printf("Enter new year(max 4)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+
 		} else if(0 == strncmp(buffer, "comment", 7)) {
-			puts("Editing comment");
+			printf("Enter new comment(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+
 		} else {
 			puts("Unknown option.");
 		}
