@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
 	struct stat st;
 	fstat(fd, &st);
 	long filesize = st.st_size;
-	printf("Filesize: %ldB\n", filesize);
+	printf("Filesize:	%ldB\n", filesize);
 	long start_index = filesize - 128;
 	char* file = malloc(filesize);
 	if(file == NULL)
@@ -80,15 +80,54 @@ int main(int argc, char** argv) {
 			read(0, buffer, 30);
 			printf("Setting title to ");
 			puts(buffer);
+			memcpy(data + 3, buffer, 30);
+			printf("Data: ");
+			fflush(stdout);
+			write(1, data, 128);
 		} else if(0 == strncmp(buffer, "artist", 6)) {
-			puts("Editing artist");
-			
+			printf("Enter new artist(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+			memcpy(data + 33, buffer, 30);
+			printf("Data: ");
+			fflush(stdout);
+			write(1, data, 128);
 		} else if(0 == strncmp(buffer, "album", 5)) {
-			puts("Editing album");
+			printf("Enter new album(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+			memcpy(data + 63, buffer, 30);
+			printf("Data: ");
+			fflush(stdout);
+			write(1, data, 128);
 		} else if(0 == strncmp(buffer, "year", 4)) {
-			puts("Editing year");
+			printf("Enter new year(max 4)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+			memcpy(data + 93, buffer, 4);
+			printf("Data: ");
+			fflush(stdout);
+			write(1, data, 128);
 		} else if(0 == strncmp(buffer, "comment", 7)) {
-			puts("Editing comment");
+			printf("Enter new comment(max 30)>");
+			fflush(stdout);
+			memset(buffer, 0, 255);
+			read(0, buffer, 30);
+			printf("Setting title to ");
+			puts(buffer);
+			memcpy(data + 97, buffer, 30);
+			printf("Data: ");
+			fflush(stdout);
+			write(1, data, 128);
 		} else {
 			puts("Unknown option.");
 		}
